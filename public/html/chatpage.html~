@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+
+<html>
+<title>Meet your Team</title>
+<script src="http://code.jquery.com/jquery-latest.min.js"></script>
+<script src="/socket.io/socket.io.js"></script>
+<head>
+<link href="http://s3.amazonaws.com/codecademy-content/courses/ltp/css/shift.css" rel="stylesheet">
+<link rel="stylesheet" href="http://s3.amazonaws.com/codecademy-content/courses/ltp/css/bootstrap.css">
+<link rel="stylesheet" href="./stylesheets/homp.css">
+</head>
+
+
+
+<style>
+#messages1{position:fixed;top:150px;width:450px;left:60px;max-height:60%;margin:0;padding:15px 100px 10px 35px;overflow:overlay;background:rgba(255,255,255,.3);border:1px solid #ddd;-webkit-box-shadow:inset rgba(34,34,34,.1)0 4px 4px;box-shadow:inset rgba(65, 197, 37, 0.3)0 4px 4px;border-radius:5px;text-align:right}
+#active{position:fixed;top:150px;width:150px;right:60px;max-height:60%;margin:0;padding:15px 100px 10px 35px;overflow:overlay;background:rgba(255,255,255,.3);border:1px solid #ddd;-webkit-box-shadow:inset rgba(34,34,34,.1)0 4px 4px;box-shadow:inset rgba(65, 197, 37, 0.3)0 4px 4px;border-radius:5px;text-align:left}
+</style>
+
+
+
+
+<body>
+<h1 style="margin-left:60px;">welcome!!!</h1>
+
+<a href='/upload'><h3 style="margin-left:60px;">share images</h3></a>
+<!--<a href='/allimages'><h3>view images</h3></a>-->
+
+
+<form id="send-message"style="margin-left:60px;">
+<input type="text" id="message" autocomplete="off" placeholder="type your message here">
+<input type="submit" value="send">
+</form>
+<ul id="messages1"></ul>
+<ul class="active users" id="active"></ul>
+
+
+<!--logic starts here-->
+<script>
+function getCookie(cname) {
+    var name = cname + "=";
+    var ca = document.cookie.split(';');
+    
+    for(var i=0; i<ca.length; i++) {
+        var c = ca[i];
+        while (c.charAt(0)==' ') c = c.substring(1);
+        if (c.indexOf(name) == 0) return c.substring(name.length, c.length);
+    }
+    return "";
+}
+
+</script>
+
+
+<script>
+$(document).ready(function(){
+
+  var auser=getCookie("chatName");
+   var from =auser;
+   var to='haha';
+    var socket=io.connect();
+    
+    var $message=$('#message');
+    var $list=$('#list');
+    var $messageForm=$('#send-message');
+    $messageForm.submit(function(event){
+      event.preventDefault();
+      socket.emit('new message',from,to,$message.val());
+      $message.val('');
+    });
+    socket.on('listofusers',function(list){
+           
+ for(var k=0;k<list.length;k++)
+       if(list[k]!=socket.nickname)
+      $('#active').prepend("<li>"+list[k]+"</li>");
+});
+    socket.on('message',function(from,to,data){
+var d = new Date();
+    var n = d.toTimeString().substring(0,5);
+$('#messages1').prepend("<li>"+from+' &nbsp:&nbsp '+ data+"&nbsp&nbsp&nbsp&nbsp"+n+"</li>");       
+
+    });
+});
+</script>
+<!--logic ends here-->
+
+</body>
+
+</html>

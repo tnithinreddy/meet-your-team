@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+
+<html>
+<title>main page</title>
+<body>
+<h1>welcome!!!</h1>
+<form >
+<input type="text" name="message" placeholder="type your message here">
+<input type="submit" value="send">
+</form>
+</body>
+
+</html>

@@ -1,0 +1,27 @@
+<! DOCTYPE html>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+<body>
+<p> register to continue </p>
+<form method='POST' id='register_form' enctype='multipart/form-data'>
+<input   id='userid' type='text' name="username"></br>
+<input type='password' id='password1' placeholder="password11" name="password"></br>
+<input type='password' id='match' placeholder="re-enter password"></br>
+<input type= 'submit' value="sign up">
+</form>
+<script>
+$(document).ready(function(){
+      var $form=$('#register_form');
+      var $pass=$('#password');
+      var $p_match=$('#match');
+      $form.submit(function(event){
+          alert("p : "+$pass.val()+" match : "+$p_match.val());
+          if($pass.val()!=$p_match.val()){
+                event.preventDefault();
+                alert("passwords did not match");
+              }
+          
+                       
+      });
+});
+</script>
+</body>

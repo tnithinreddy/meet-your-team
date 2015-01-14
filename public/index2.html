@@ -1,0 +1,22 @@
+<!DOCTYPE html
+<html>
+<title>my chat login</title>
+<style>
+#pagetext,#pagetext1,#main_text{
+   color:blue;
+}
+</style>
+<body>
+<div id="main_text"><h1>come,suggest and enjoy</h1></div>
+<p>new user? <a href='/register'>click to register</a></p>
+<h3>login to continue</h3>
+<form action="/check" method="POST" enctype='multipart/form-data'>
+<div  id='pagetext'><p> username</p></div>
+    
+<input type="text" id='username' name='username'></br>
+<div id='pagetext'><p> password</p></div>
+<input type="password" id='password' name='password'></br>
+<input type="submit" value="login">
+</form>
+</body>
+</html>

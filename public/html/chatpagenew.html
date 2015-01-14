@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+<title>Meet your Team</title>
+
+<head>
+<script src="http://code.jquery.com/jquery-latest.min.js"></script>
+<script src="/socket.io/socket.io.js"></script>
+<link href="http://s3.amazonaws.com/codecademy-content/courses/ltp/css/shift.css" rel="stylesheet">
+<link rel="stylesheet" href="http://s3.amazonaws.com/codecademy-content/courses/ltp/css/bootstrap.css">
+<link rel="stylesheet" href="stylesheets/chatpage.css">
+</head>
+<body>
+<h1 >welcome new!!!</h1>
+<a href='/#'><h3 >share images</h3></a>
+
+<div class="chat-area" id="chatsection">
+<div id="messages1"></div>
+</div>
+
+
+<form id="send-message" class="form-inline" role="form">
+<input class="form-control txt" type="text" id="message" autocomplete="off" placeholder="type your message here" >
+<input type="submit" value="send" class="btn btn-success">
+</form>
+
+<div class="all-users" id="allusers">
+<div id="userslist"></div>
+</div>
+<!--logic starts here-->
+<script>
+function getCookie(cname) {
+    var name = cname + "=";
+    var ca = document.cookie.split(';');
+    
+    for(var i=0; i<ca.length; i++) {
+        var c = ca[i];
+        while (c.charAt(0)==' ') c = c.substring(1);
+        if (c.indexOf(name) == 0) return c.substring(name.length, c.length);
+    }
+    return "";
+}
+
+</script>
+
+<script>
+$(document).ready(function(){
+
+ 
+   var ll=0;
+   var auser=getCookie("chatName");
+   var from =auser;
+   var to='haha';
+   var socket=io.connect();
+   var newm;
+   
+    var objDiv = document.getElementById("chatsection");
+    var $messageForm=$('#send-message');
+
+    $messageForm.submit(function(event){
+      event.preventDefault();
+      socket.emit('new message',from,to,$('#message').val());
+      
+     /* if(ll===1){
+      newm.addClass('from');
+      ll=0;
+      }
+      else ll=1;*/
+     
+      $('#message').val('');
+    });
+    
+   
+      socket.on('listofusers',function(list){
+           
+       for(var k=0;k<list.length;k++)
+            if(list[k]!=socket.nickname)
+              $('#userslist').append($("<p></p>").text(list[k]).addClass('users-style'));
+       });
+    socket.on('message',function(from,to,data){
+    var d = new Date();
+    var n = d.toTimeString().substring(0,5);
+    newm=$("<p></p>").text( from+' : '+data+'     '+n).addClass('styl'); 
+     $('#messages1').append(newm);
+      
+     objDiv.scrollTop = objDiv.scrollHeight;
+
+    });
+    
+ 
+});
+</script>
+<!--logic ends here-->
+</body>
+
+</html>

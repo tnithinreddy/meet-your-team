@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+<link href="http://s3.amazonaws.com/codecademy-content/courses/ltp/css/shift.css" rel="stylesheet">
+<link rel="stylesheet" href="http://s3.amazonaws.com/codecademy-content/courses/ltp/css/bootstrap.css">
+<link rel="stylesheet" href="stylesheets/loginstyle.css">
+</head>
+<title>Login to Meet</title>
+<body >
+
+
+<!--login form-->
+<div class="jumbotron">
+<div class="container loginf" >
+<form role="form " action="/check" method="POST" enctype='multipart/form-data'>
+    <div class="form-group">
+         <p> username</p>
+         <input class="form-control" type="text" id='username' name='username'></br>
+    </div>
+
+    <div class="form-group">
+	<p> password</p>
+	<input class="form-control" type="password" id='password' name='password'></br>
+    </div>
+    
+    <button  type="submit" class="form-control btn btn-primary">Log In</button>
+</form>
+<div class="others">
+<button  type="submit" class="k form-control btn btn-primary"  >Login with facebook</button>
+<button  type="submit" class="k form-control btn btn-primary">Login with twitter</button>
+<button  type="submit" class="k form-control btn btn-primary">Sign Up</button>
+</div>
+</div>
+</div>
+</body>
+</html>

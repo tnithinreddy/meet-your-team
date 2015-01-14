@@ -1,0 +1,43 @@
+
+
+.logo{
+border:0px;
+}
+.jumbotron{
+   background-color:#324A57;
+   height:500px;
+   
+   
+}
+.jumbotron  {
+ color:#FFCC66;
+ position:relative;
+ 
+}
+.jumbotron  p{
+  color:white;
+  position:relative;
+  top:75px;
+  
+}
+.jumbotron h1{
+  position:absolute;
+}
+.nav{
+ position: relative;
+top: 39px;
+ font-size:20px;
+ 
+}
+.languages .container h3{
+  color:blue;
+  font-family:'Sans-serif';
+}
+.languages .container .row .col-md-2{
+background-color:#d82f2f;
+border:5px solid white;
+height:150px;
+}
+.learn-more{
+ margin-top:0px;
+}

@@ -1,0 +1,80 @@
+.chat-area {
+position:absolute;
+left:100px;
+width:600px;
+height:480px;
+overflow-y:scroll;
+overflow-x:hidden;
+border:5px solid #69A8C5;
+border-radius:8px;
+background-color: gainsboro;
+}
+body{
+  background-color:#433F66;
+}
+
+.form-inline{
+position:absolute;
+left:100px;
+top:600px;
+
+}
+.form-inline .txt {
+width:500px;
+}
+.form-inline .btn{
+width:97px;}
+.fas {
+  font-size:100px;
+}
+.styl{
+  
+  position:relative;
+  left:5px;
+  font-size:13px;
+  font-family:monospace;
+  word-wrap: break-word;
+  padding-left:5px;
+  color:black;
+  background-color:#FBFDFA;
+  border: 5px solid #FBFDFA;
+  border-radius:5px;
+  width:380px;
+  margin-top:5px;
+  margin-bottom:5px;
+}
+.from{
+    position:relative;
+  left:190px;
+  
+}
+.all-users {
+position:absolute;
+background-color: gainsboro;
+left:800px;
+width:250px;
+height:480px;
+overflow-y:scroll;
+overflow-x:hidden;
+border:5px solid #69A8C5;
+border-radius:8px;
+}
+.users-style{
+   width:200px;
+   font-size:13px;
+  font-family:monospace;
+  word-wrap: break-word;
+  margin-left:10px;
+  color:black;
+  background-color:#FBFDFA;
+  border: 5px solid #FBFDFA;
+  border-radius:5px;
+   margin-top:5px;
+  margin-bottom:5px;
+   
+}
+.activeusr{
+  background-color: #5cb85c;
+  border: 5px solid #4cb85c;
+  color:black;
+}
